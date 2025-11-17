@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Moonlit Desire – Simple Single‑File Site</title>
+
+<style>
+/* =============== SIMPLE PASTEL THEME =============== */
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #ffffff;
+  color: #2a2450;
+  overflow-x: hidden;
+}
+section { padding: 60px 20px; text-align: center; max-width: 900px; margin: auto; }
+h1 { font-size: 2rem; margin-bottom: 15px; }
+p { font-size: 1.1rem; line-height: 1.6; }
+
+/* ===== STAR & MOON BACKGROUND FIXES ===== */
+.stars::before {
+  content: "";
+  position: fixed;
+  top: 0; left: 0;
+  width: 200%; height: 200%;
+  background:
+    url('https://i.imgur.com/7H25YZe.png') repeat,
+    url('https://www.transparenttextures.com/patterns/stardust.png');
+  opacity: 0.6; z-index: -1;
+  animation: float 20s infinite alternate ease-in-out;
+}
+/* FIXED: Removed malformed 'to' block */
+@keyframes float {
+  from { transform: translate(0,0);} 
+  to { transform: translate(-60px,-60px);} 
+} 
+
+/* ===== NAV ===== */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  padding: 15px;
+  background: rgba(255,255,255,0.4);
+  backdrop-filter: blur(10px);
+  position: sticky;
+  top: 0;
+  z-index: 10; /* Ensures nav stays above chat widget */
+}
+nav a {
+  color: #2a2450;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+/* ===== CARDS ===== */
+.card {
+  background: #f7f2ff;
+  padding: 20px;
+  border-radius: 15px;
+  margin: 15px auto;
+  box-shadow: 0 0 18px rgba(150,130,255,0.4);
+  max-width: 300px;
+}
+
+/* ===== BOOKING FORM ===== */
+form {
+  max-width: 350px;
+  margin: auto;
+  background: #f7f2ff;
+  padding: 20px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(150,130,255,0.4);
+}
+form input, form select {
+  width: 100%;
+  margin: 8px 0;
+  padding: 10px;
+  border: none;
+  border-radius: 10px;
+}
+button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #c8b6ff, #a9c1ff);
+  border: none;
+  color: white;
+  font-size: 1rem;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: transform 0.2s;
+}
+button:hover {
+  transform: translateY(-2px);
+}
+
+/* ===== CHAT WIDGET ===== */
+#chatBtn {
+  position: fixed;
+  bottom: 20px; right: 20px;
+  background: linear-gradient(135deg, #c8b6ff, #a9c1ff);
+  border: none; color: white;
+  padding: 12px 20px;
+  border-radius: 50px;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(150,130,255,0.6);
+  z-index: 20;
+}
+#chatBox {
+  display: none;
+  position: fixed;
+  bottom: 80px; right: 20px;
+  width: 260px;
+  background: #f7f2ff;
+  padding: 15px;
+  border-radius: 15px;
+  box-shadow: 0 0 20px rgba(150,130,255,0.4);
+  z-index: 20;
+}
+#messages {
+  height: 180px;
+  overflow-y: auto;
+  background: #ede6ff;
+  padding: 10px;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  font-size: 0.9em;
+}
+#msgInput {
+  width: calc(100% - 20px);
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+#chatBox button {
+  width: 100%;
+  margin-top: 0;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width:600px){ nav{flex-wrap:wrap;} }
+</style>
+</head>
+<body>
+
+<div style="text-align:center; padding:20px 0;">
+    <img src="./MD BANNER.png" alt="Moonlit Desire Logo" style="max-width:220px; width:80%; height:auto;" />
+</div>
+
+<div class="stars"></div>
+
+<nav>
+  <a href="#about">About</a>
+  <a href="#companions">Companions</a>
+  <a href="#pricing">Pricing</a>
+  <a href="#booking">Booking</a>
+</nav>
+
+<section id="about">
+  <h1>Moonlit Desire</h1>
+  <p>At Moonlit Desire, we create a haven where you can simply be—fully accepted, fully heard, and fully supported. Whether you need someone to talk to, unwind with, or keep you company during quiet hours, our companions offer warmth, empathy, and genuine human connection.</p>
+  <p>We understand that life can feel heavy, and opening up isn’t always easy. That’s why we offer a judgment‑free, comforting space where your thoughts are safe and your emotions are valid. You're never a burden here. You’re welcome, valued, and cared for—always.</p>
+  <p>Let us accompany you through your nights with compassion, kindness, and understanding. You deserve peace, comfort, and someone who truly listens.</p>
+</section>
+
+<section id="companions">
+  <h1>Our Companions</h1>
+  <div class="card"><h3>Alex</h3><p>Warm, reflective, comforting.</p></div>
+  <div class="card"><h3>Luna</h3><p>Gentle, empathetic, soothing.</p></div>
+  <div class="card"><h3>Noah</h3><p>Friendly, uplifting, supportive.</p></div>
+</section>
+
+<section id="pricing">
+  <h1>Pricing</h1>
+  <p>Your first 30 minutes are FREE. After that:</p>
+  <div class="card"><h3>1 Hour – $10</h3></div>
+  <div class="card"><h3>2 Hours – $20</h3></div>
+  <div class="card"><h3>3 Hours – $30</h3></div>
+</section>
+
+<section id="booking">
+  <h1>Book a Session</h1>
+    <form onsubmit="alert('Booking request sent! We will contact you via email soon.'); return false;">
+    <input type="text" placeholder="Your Name" required />
+    <input type="email" placeholder="Your Email" required />
+    <input type="datetime-local" required />
+    <select>
+      <option>Free 30‑Minute Trial</option>
+      <option>1 Hour – $10</option>
+      <option>2 Hours – $20</option>
+      <option>3 Hours – $30</option>
+    </select>
+    <button type="submit">Book Now</button>
+  </form>
+</section>
+
+<button id="chatBtn">Chat</button>
+<div id="chatBox">
+  <h3>Chat</h3>
+  <div id="messages"></div>
+  <input id="msgInput" placeholder="Type..." />
+  <button onclick="sendMsg()">Send</button>
+</div>
+
+<script>
+// Define elements properly
+const chatBtn = document.getElementById('chatBtn');
+const chatBox = document.getElementById('chatBox');
+const messages = document.getElementById('messages');
+const msgInput = document.getElementById('msgInput');
+
+// Chat button toggle
+chatBtn.onclick = () => {
+  chatBox.style.display = chatBox.style.display === 'block' ? 'none' : 'block';
+};
+
+function sendMsg() {
+  const userMessage = msgInput.value.trim();
+  if (!userMessage) return;
+
+  // Add user message to the chat display
+  messages.innerHTML += `<div><strong>You:</strong> ${userMessage}</div>`;
+  
+  // Clear input
+  msgInput.value = '';
+
+  // Scroll to bottom of messages
+  messages.scrollTop = messages.scrollHeight;
+
+  // ===== TELEGRAM BOT LOGIC (Async) =====
+  // REMINDER: Replace these with your actual bot token and chat ID
+  const BOT_TOKEN = "YOUR_TELEGRAM_BOT_TOKEN_HERE";
+  const CHAT_ID = "YOUR_TELEGRAM_CHAT_ID_HERE";
+  const text = encodeURIComponent("New message from website: " + userMessage);
+
+  fetch(`https://api.telegram.org/bot${BOT_TOKEN}/sendMessage?chat_id=${CHAT_ID}&text=${text}`)
+    .then(r => r.json())
+    .then(() => {
+        // Buddy response on successful send
+        messages.innerHTML += `<div><strong>Buddy:</strong> We've received your message! We'll get back to you soon.</div>`;
+    })
+    .catch(() => {
+        // Buddy response on error
+        messages.innerHTML += `<div><strong>Buddy:</strong> Unable to contact admin right now, but I’m here with you.</div>`;
+    })
+    .finally(() => {
+        // Scroll again after response
+        messages.scrollTop = messages.scrollHeight;
+    });
+}
+
+// Allow sending message by pressing ENTER key
+msgInput.addEventListener('keypress', function (e) {
+  if (e.key === 'Enter') {
+    sendMsg();
+  }
+});
+</script>
+
+
+<footer style="text-align:center; padding:30px 20px; margin-top:40px; background:#f7f7f7; color:#2a2450; font-size:0.9rem; border-top:1px solid #ddd;">
+  <p><strong>Moonlit Desire</strong></p>
+  <p>Dream Bigger. Connect Deeper.</p>
+  <p>Instagram: @moonlit_desire • Email: moonlit.desiree@gmail.com</p>
+  <p style="margin-top:10px; font-size:0.8rem; color:#555;">© 2025 Moonlit Desire. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
